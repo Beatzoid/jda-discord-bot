@@ -5,6 +5,8 @@ import me.beatzoid.jdabot.command.ICommand;
 import me.beatzoid.jdabot.command.commands.HelpCommand;
 import me.beatzoid.jdabot.command.commands.PingCommand;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
@@ -13,6 +15,8 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 public class CommandManager {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(Listener.class);
     private final List<ICommand> commands = new ArrayList<>();
 
     public CommandManager () {
@@ -28,6 +32,7 @@ public class CommandManager {
         }
 
         commands.add(cmd);
+        LOGGER.info("Loaded command {}", cmd.getName());
     }
 
     public List<ICommand> getCommands() {
@@ -61,6 +66,8 @@ public class CommandManager {
 
             CommandContext ctx = new CommandContext(event, args);
 
+            // All this complicated looking line does is capitalize the first letter of the command name. Ex: "ping" to "Ping"
+            LOGGER.info("{} command has been run by {}", cmd.getName().substring(0, 1).toUpperCase() + cmd.getName().substring(1), event.getAuthor().getAsTag());
             cmd.handle(ctx);
         }
     }
