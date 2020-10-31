@@ -19,7 +19,7 @@ dependencies {
     compile group: 'com.jagrosh', name: 'jda-utilities', version: '3.0.4'
     compile group: 'me.duncte123', name: 'botCommons', version: '2.0.119'
     compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
-
+    compile 'io.github.cdimascio:dotenv-java:2.2.0'
 }
 
 compileJava.options.encoding = 'UTF-8'
