@@ -3,6 +3,7 @@ package me.beatzoid.jdabot;
 import me.beatzoid.jdabot.command.CommandContext;
 import me.beatzoid.jdabot.command.ICommand;
 import me.beatzoid.jdabot.command.commands.HelpCommand;
+import me.beatzoid.jdabot.command.commands.KickCommand;
 import me.beatzoid.jdabot.command.commands.PasteCommand;
 import me.beatzoid.jdabot.command.commands.PingCommand;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
@@ -24,6 +25,7 @@ public class CommandManager {
         addCommand(new PingCommand());
         addCommand(new HelpCommand(this));
         addCommand(new PasteCommand());
+        addCommand(new KickCommand());
     }
 
     private void addCommand(ICommand cmd) {
