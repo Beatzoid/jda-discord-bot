@@ -17,6 +17,11 @@ public class PingCommand implements ICommand {
     }
 
     @Override
+    public String getHelp() {
+        return "Shows the current ping of the bot";
+    }
+
+    @Override
     public String getName() {
         return "ping";
     }
