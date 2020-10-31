@@ -15,11 +15,12 @@ repositories {
 }
 
 dependencies {
-    compile group: 'net.dv8tion', name: 'JDA', version: '4.2.0_214'
-    compile group: 'com.jagrosh', name: 'jda-utilities', version: '3.0.4'
-    compile group: 'me.duncte123', name: 'botCommons', version: '2.0.119'
-    compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
-    compile 'io.github.cdimascio:dotenv-java:2.2.0'
+    implementation group: 'net.dv8tion', name: 'JDA', version: '4.2.0_214'
+    implementation group: 'com.jagrosh', name: 'jda-utilities', version: '3.0.4'
+    implementation group: 'me.duncte123', name: 'botCommons', version: '2.0.119'
+    implementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
+    implementation 'io.github.cdimascio:dotenv-java:2.2.0'
+    implementation group: 'org.menudocs', name: 'paste-client-java', version: '1.1.1'
 }
 
 compileJava.options.encoding = 'UTF-8'
