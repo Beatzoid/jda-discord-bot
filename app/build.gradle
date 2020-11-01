@@ -21,6 +21,9 @@ dependencies {
     implementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
     implementation 'io.github.cdimascio:dotenv-java:2.2.0'
     implementation group: 'org.menudocs', name: 'paste-client-java', version: '1.1.1'
+
+    implementation group: 'com.zaxxer', name: 'HikariCP', version: '3.4.5'
+    implementation group: 'org.xerial', name: 'sqlite-jdbc', version: '3.32.3.2'
 }
 
 compileJava.options.encoding = 'UTF-8'

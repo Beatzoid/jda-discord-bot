@@ -1,5 +1,6 @@
 package me.beatzoid.jdabot;
 
+import me.beatzoid.jdabot.database.SQLiteDataSource;
 import me.duncte123.botcommons.messaging.EmbedUtils;
 import me.duncte123.botcommons.web.WebUtils;
 import net.dv8tion.jda.api.EmbedBuilder;
@@ -10,10 +11,13 @@ import net.dv8tion.jda.api.requests.GatewayIntent;
 import net.dv8tion.jda.api.utils.cache.CacheFlag;
 
 import javax.security.auth.login.LoginException;
+import java.sql.SQLException;
 
 public class Bot {
 
-    private Bot() throws LoginException {
+    private Bot() throws LoginException, SQLException {
+        SQLiteDataSource.getConnection();
+
         WebUtils.setUserAgent("Beatzoid JDA Bot/Beatzoid#1642");
 
         JDA jda = JDABuilder.createDefault(
@@ -33,7 +37,7 @@ public class Bot {
         );
     }
 
-    public static void main(String[] args) throws LoginException {
+    public static void main(String[] args) throws LoginException, SQLException {
         new Bot();
     }
 }
