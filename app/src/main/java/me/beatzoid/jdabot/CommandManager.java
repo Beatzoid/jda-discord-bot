@@ -3,6 +3,7 @@ package me.beatzoid.jdabot;
 import me.beatzoid.jdabot.command.CommandContext;
 import me.beatzoid.jdabot.command.ICommand;
 import me.beatzoid.jdabot.command.commands.*;
+import me.beatzoid.jdabot.command.commands.admin.PrefixCommand;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,6 +26,7 @@ public class CommandManager {
         addCommand(new KickCommand());
         addCommand(new MemeCommand());
         addCommand(new JokeCommand());
+        addCommand(new PrefixCommand());
     }
 
     private void addCommand(ICommand cmd) {
@@ -55,9 +57,9 @@ public class CommandManager {
         return null;
     }
 
-    void handle(GuildMessageReceivedEvent event) {
+    void handle(GuildMessageReceivedEvent event, String prefix) {
         String[] split = event.getMessage().getContentRaw()
-                .replaceFirst("(?i)" + Pattern.quote(Config.get("prefix")), "")
+                .replaceFirst("(?i)" + Pattern.quote(prefix), "")
                 .split("\\s+");
 
         String invoke = split[0].toLowerCase();

@@ -2,6 +2,7 @@ package me.beatzoid.jdabot.command.commands;
 
 import me.beatzoid.jdabot.CommandManager;
 import me.beatzoid.jdabot.Config;
+import me.beatzoid.jdabot.VeryBadDesign;
 import me.beatzoid.jdabot.command.CommandContext;
 import me.beatzoid.jdabot.command.ICommand;
 import net.dv8tion.jda.api.entities.TextChannel;
@@ -24,11 +25,15 @@ public class HelpCommand implements ICommand {
 
         if (args.isEmpty()) {
             StringBuilder builder = new StringBuilder();
+            String prefix = VeryBadDesign.PREFIXES.get(ctx.getGuild().getIdLong());
 
             builder.append("List of commands\n");
 
             manager.getCommands().stream().map(ICommand::getName).forEach(
-                    (it) -> builder.append("`").append(Config.get("prefix")).append(it).append("`\n")
+                    (it) -> builder.append("`")
+                            .append(prefix)
+                            .append(it)
+                            .append("`\n")
             );
 
             channel.sendMessage(builder.toString()).queue();

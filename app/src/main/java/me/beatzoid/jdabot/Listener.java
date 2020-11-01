@@ -26,7 +26,8 @@ public class Listener extends ListenerAdapter {
         if(user.isBot() || event.isWebhookMessage()) return;
 
 
-        String prefix = Config.get("prefix");
+        final long guildId = event.getGuild().getIdLong();
+        String prefix = VeryBadDesign.PREFIXES.computeIfAbsent(guildId, (id) -> Config.get("prefix"));
         String raw = event.getMessage().getContentRaw();
 
         if (raw.equalsIgnoreCase(prefix + "shutdown") && user.getId().equals(Config.get("owner_id"))) {
@@ -39,7 +40,7 @@ public class Listener extends ListenerAdapter {
         }
 
         if (raw.startsWith(prefix)) {
-            manager.handle(event);
+            manager.handle(event, prefix);
         }
     }
 }
