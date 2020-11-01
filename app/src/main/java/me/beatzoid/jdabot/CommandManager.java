@@ -2,10 +2,7 @@ package me.beatzoid.jdabot;
 
 import me.beatzoid.jdabot.command.CommandContext;
 import me.beatzoid.jdabot.command.ICommand;
-import me.beatzoid.jdabot.command.commands.HelpCommand;
-import me.beatzoid.jdabot.command.commands.KickCommand;
-import me.beatzoid.jdabot.command.commands.PasteCommand;
-import me.beatzoid.jdabot.command.commands.PingCommand;
+import me.beatzoid.jdabot.command.commands.*;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,6 +23,7 @@ public class CommandManager {
         addCommand(new HelpCommand(this));
         addCommand(new PasteCommand());
         addCommand(new KickCommand());
+        addCommand(new MemeCommand());
     }
 
     private void addCommand(ICommand cmd) {
