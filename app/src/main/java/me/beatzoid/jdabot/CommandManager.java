@@ -2,8 +2,13 @@ package me.beatzoid.jdabot;
 
 import me.beatzoid.jdabot.command.CommandContext;
 import me.beatzoid.jdabot.command.ICommand;
-import me.beatzoid.jdabot.command.commands.*;
 import me.beatzoid.jdabot.command.commands.admin.SetPrefixCommand;
+import me.beatzoid.jdabot.command.commands.fun.JokeCommand;
+import me.beatzoid.jdabot.command.commands.fun.KickCommand;
+import me.beatzoid.jdabot.command.commands.fun.MemeCommand;
+import me.beatzoid.jdabot.command.commands.info.HelpCommand;
+import me.beatzoid.jdabot.command.commands.info.PingCommand;
+import me.beatzoid.jdabot.command.commands.misc.PasteCommand;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

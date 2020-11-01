@@ -1,4 +1,4 @@
-package me.beatzoid.jdabot.command.commands;
+package me.beatzoid.jdabot.command.commands.info;
 
 import me.beatzoid.jdabot.command.CommandContext;
 import me.beatzoid.jdabot.command.ICommand;

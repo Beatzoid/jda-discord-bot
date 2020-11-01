@@ -1,4 +1,4 @@
-package me.beatzoid.jdabot.command.commands;
+package me.beatzoid.jdabot.command.commands.fun;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import me.beatzoid.jdabot.Listener;
@@ -11,7 +11,7 @@ import net.dv8tion.jda.api.entities.TextChannel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class MemeCommand implements ICommand {
+public class JokeCommand implements ICommand {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(Listener.class);
 
@@ -19,7 +19,7 @@ public class MemeCommand implements ICommand {
     public void handle(CommandContext ctx) {
         final TextChannel channel = ctx.getChannel();
 
-        WebUtils.ins.getJSONObject("https://apis.duncte123.me/meme").async((json) -> {
+        WebUtils.ins.getJSONObject("https://apis.duncte123.me/joke").async((json) -> {
             if (!json.get("success").asBoolean()) {
                 channel.sendMessage("Something went wrong, please try again later!").queue();
                 LOGGER.error("Meme command didn't return a success: true value, here is the JSON object:\n{}", json);
@@ -29,9 +29,11 @@ public class MemeCommand implements ICommand {
             final JsonNode data = json.get("data");
             final String title = data.get("title").asText();
             final String url = data.get("url").asText();
-            final String image = data.get("image").asText();
+            final String body = data.get("body").asText();
 
-            final EmbedBuilder embed = EmbedUtils.embedImageWithTitle(title, url, image);
+            final EmbedBuilder embed = EmbedUtils.getDefaultEmbed()
+                    .setTitle(title, url)
+                    .setDescription(body);
 
             channel.sendMessage(embed.build()).queue();
         });
@@ -39,11 +41,11 @@ public class MemeCommand implements ICommand {
 
     @Override
     public String getName() {
-        return "meme";
+        return "joke";
     }
 
     @Override
     public String getHelp() {
-        return "Shows a random meme";
+        return "Shows a random joke";
     }
 }
