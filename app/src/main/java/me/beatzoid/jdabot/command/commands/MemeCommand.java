@@ -18,6 +18,7 @@ public class MemeCommand implements ICommand {
     @Override
     public void handle(CommandContext ctx) {
         final TextChannel channel = ctx.getChannel();
+
         WebUtils.ins.getJSONObject("https://apis.duncte123.me/meme").async((json) -> {
             if (!json.get("success").asBoolean()) {
                 channel.sendMessage("Something went wrong, please try again later!").queue();
