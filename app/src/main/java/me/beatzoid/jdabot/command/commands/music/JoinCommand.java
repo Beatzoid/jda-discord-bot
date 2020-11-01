@@ -15,11 +15,13 @@ import org.slf4j.LoggerFactory;
 @SuppressWarnings("ConstantConditions")
 public class JoinCommand implements ICommand {
 
+    public static TextChannel channel;
+
     @Override
     public void handle(CommandContext ctx) {
         final Logger LOGGER = LoggerFactory.getLogger(Listener.class);
 
-        final TextChannel channel = ctx.getChannel();
+        channel = ctx.getChannel();
         final Member self = ctx.getSelfMember();
         final GuildVoiceState selfVoiceState = self.getVoiceState();
 

@@ -1,5 +1,6 @@
 package me.beatzoid.jdabot;
 
+import me.beatzoid.jdabot.command.commands.music.JoinCommand;
 import me.beatzoid.jdabot.database.DatabaseManager;
 import me.duncte123.botcommons.BotCommons;
 import net.dv8tion.jda.api.entities.User;
@@ -32,12 +33,13 @@ public class Listener extends ListenerAdapter {
                 if (audioManager.getConnectedChannel() != null) {
                     if (audioManager.getConnectedChannel().getMembers().size() == 1) {
                         audioManager.closeAudioConnection();
+                        JoinCommand.channel.sendMessage("I have automatically left the voice channel because no one was in it").queue();
                     }
                 }
             });
         };
 
-        executor.scheduleWithFixedDelay(isAloneVC, 0, 5, TimeUnit.SECONDS);
+        executor.scheduleWithFixedDelay(isAloneVC, 5, 5, TimeUnit.SECONDS);
     }
 
     @Override
