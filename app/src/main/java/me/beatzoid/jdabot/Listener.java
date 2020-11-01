@@ -6,9 +6,14 @@ import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.events.ReadyEvent;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
+import net.dv8tion.jda.api.managers.AudioManager;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 public class Listener extends ListenerAdapter {
 
@@ -18,6 +23,21 @@ public class Listener extends ListenerAdapter {
     @Override
     public void onReady(@NotNull ReadyEvent event) {
         LOGGER.info("{} is ready", event.getJDA().getSelfUser().getAsTag());
+
+        ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
+
+        Runnable isAloneVC = () -> {
+            event.getJDA().getGuilds().forEach(guild -> {
+                AudioManager audioManager = guild.getAudioManager();
+                if (audioManager.getConnectedChannel() != null) {
+                    if (audioManager.getConnectedChannel().getMembers().size() == 1) {
+                        audioManager.closeAudioConnection();
+                    }
+                }
+            });
+        };
+
+        executor.scheduleWithFixedDelay(isAloneVC, 0, 5, TimeUnit.SECONDS);
     }
 
     @Override

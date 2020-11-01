@@ -9,6 +9,7 @@ import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Activity;
 import net.dv8tion.jda.api.requests.GatewayIntent;
 import net.dv8tion.jda.api.utils.cache.CacheFlag;
+import okhttp3.Cache;
 
 import javax.security.auth.login.LoginException;
 import java.sql.SQLException;
@@ -21,9 +22,15 @@ public class Bot {
         JDA jda = JDABuilder.createDefault(
                 Config.get("token"),
                 GatewayIntent.GUILD_MEMBERS,
-                GatewayIntent.GUILD_MESSAGES
+                GatewayIntent.GUILD_MESSAGES,
+                GatewayIntent.GUILD_VOICE_STATES
         )
-                .disableCache(CacheFlag.EMOTE, CacheFlag.VOICE_STATE, CacheFlag.EMOTE, CacheFlag.VOICE_STATE)
+                .disableCache(
+                        CacheFlag.CLIENT_STATUS,
+                        CacheFlag.ACTIVITY,
+                        CacheFlag.EMOTE
+                )
+                .enableCache(CacheFlag.VOICE_STATE)
                 .addEventListeners(new Listener())
                 .setActivity(Activity.watching("Beatzoid develop me!"))
                 .build();
