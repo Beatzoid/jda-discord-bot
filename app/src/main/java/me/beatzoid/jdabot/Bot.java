@@ -15,9 +15,7 @@ import java.sql.SQLException;
 
 public class Bot {
 
-    private Bot() throws LoginException, SQLException {
-        SQLiteDataSource.getConnection();
-
+    private Bot() throws LoginException {
         WebUtils.setUserAgent("Beatzoid JDA Bot/Beatzoid#1642");
 
         JDA jda = JDABuilder.createDefault(
@@ -37,7 +35,7 @@ public class Bot {
         );
     }
 
-    public static void main(String[] args) throws LoginException, SQLException {
+    public static void main(String[] args) throws LoginException {
         new Bot();
     }
 }
