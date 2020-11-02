@@ -11,6 +11,7 @@ import me.beatzoid.jdabot.command.commands.info.PingCommand;
 import me.beatzoid.jdabot.command.commands.misc.PasteCommand;
 import me.beatzoid.jdabot.command.commands.music.JoinCommand;
 import me.beatzoid.jdabot.command.commands.music.PlayCommand;
+import me.beatzoid.jdabot.command.commands.music.StopCommand;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,15 +28,25 @@ public class CommandManager {
     private final List<ICommand> commands = new ArrayList<>();
 
     public CommandManager () {
+        // Info
         addCommand(new PingCommand());
         addCommand(new HelpCommand(this));
-        addCommand(new PasteCommand());
-        addCommand(new KickCommand());
+
+        // Fun
         addCommand(new MemeCommand());
         addCommand(new JokeCommand());
+
+        // Admin
         addCommand(new SetPrefixCommand());
+        addCommand(new KickCommand());
+
+        // Music
         addCommand(new JoinCommand());
         addCommand(new PlayCommand());
+        addCommand(new StopCommand());
+
+        // Misc
+        addCommand(new PasteCommand());
     }
 
     private void addCommand(ICommand cmd) {
