@@ -91,10 +91,10 @@ public class PlayCommand implements ICommand {
     private String searchYoutube(String input) {
         try {
             List<SearchResult> results = youTube.search()
-                    .list("id,snippet")
+                    .list(List.of("id,snippet"))
                     .setQ(input)
                     .setMaxResults(1L)
-                    .setType("video")
+                    .setType(List.of("video"))
                     .setFields("items(id/kind,id/videoId,snippet/title,snippet/thumbnails/default/url)")
                     .setKey(Config.get("youtube_key"))
                     .execute()
