@@ -44,6 +44,7 @@ public class CommandManager {
         addCommand(new StopCommand());
         addCommand(new SkipCommand());
         addCommand(new NowPlayingCommand());
+        addCommand(new QueueCommand());
 
         // Misc
         addCommand(new PasteCommand());
