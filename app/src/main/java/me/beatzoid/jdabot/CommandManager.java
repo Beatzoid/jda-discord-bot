@@ -9,10 +9,7 @@ import me.beatzoid.jdabot.command.commands.fun.MemeCommand;
 import me.beatzoid.jdabot.command.commands.info.HelpCommand;
 import me.beatzoid.jdabot.command.commands.info.PingCommand;
 import me.beatzoid.jdabot.command.commands.misc.PasteCommand;
-import me.beatzoid.jdabot.command.commands.music.JoinCommand;
-import me.beatzoid.jdabot.command.commands.music.PlayCommand;
-import me.beatzoid.jdabot.command.commands.music.SkipCommand;
-import me.beatzoid.jdabot.command.commands.music.StopCommand;
+import me.beatzoid.jdabot.command.commands.music.*;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -46,6 +43,7 @@ public class CommandManager {
         addCommand(new PlayCommand());
         addCommand(new StopCommand());
         addCommand(new SkipCommand());
+        addCommand(new NowPlayingCommand());
 
         // Misc
         addCommand(new PasteCommand());
