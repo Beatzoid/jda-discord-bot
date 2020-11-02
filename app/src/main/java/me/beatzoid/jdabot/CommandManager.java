@@ -10,6 +10,7 @@ import me.beatzoid.jdabot.command.commands.info.HelpCommand;
 import me.beatzoid.jdabot.command.commands.info.PingCommand;
 import me.beatzoid.jdabot.command.commands.misc.PasteCommand;
 import me.beatzoid.jdabot.command.commands.music.JoinCommand;
+import me.beatzoid.jdabot.command.commands.music.PlayCommand;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,6 +35,7 @@ public class CommandManager {
         addCommand(new JokeCommand());
         addCommand(new SetPrefixCommand());
         addCommand(new JoinCommand());
+        addCommand(new PlayCommand());
     }
 
     private void addCommand(ICommand cmd) {
