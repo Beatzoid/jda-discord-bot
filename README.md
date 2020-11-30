@@ -1,5 +1,6 @@
 # JDA Discord Bot
 ![Java CI with Gradle](https://github.com/Beatzoid/jda-discord-bot/workflows/Java%20CI%20with%20Gradle/badge.svg?branch=master&event=push)
+[![CodeFactor](https://www.codefactor.io/repository/github/beatzoid/jda-discord-bot/badge)](https://www.codefactor.io/repository/github/beatzoid/jda-discord-bot)
 
 ---
 
