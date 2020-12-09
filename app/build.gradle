@@ -26,7 +26,7 @@ dependencies {
 
 
     implementation group: 'com.zaxxer', name: 'HikariCP', version: '3.4.5'
-    implementation group: 'org.xerial', name: 'sqlite-jdbc', version: '3.32.3.2'
+    implementation group: 'org.xerial', name: 'sqlite-jdbc', version: '3.32.3.3'
 }
 
 compileJava.options.encoding = 'UTF-8'
